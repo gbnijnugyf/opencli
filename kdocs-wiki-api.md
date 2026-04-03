@@ -22,38 +22,49 @@
 ## 1. 查询知识库列表 (list)
 
 ```
-GET /wiki/api/km/space/list?classify=all&page_size=300
+GET https://wiki.kdocs.cn/kwiki/api/v1/groups/space/list?page_size=30&classify=allWithSquare&permission_key=view_space_setting&page_token=&with_more=true
 ```
+
+> **注意**: 此接口在 `wiki.kdocs.cn` 域名下，非 `www.kdocs.cn`。
 
 **参数**:
 | 参数 | 类型 | 必填 | 说明 |
 |------|------|------|------|
-| classify | string | 是 | 分类筛选，`all` 表示全部，`manager` 表示我管理的 |
+| classify | string | 是 | `allWithSquare` 全部含广场, `manager` 我管理的 |
 | page_size | number | 是 | 每页数量 |
+| permission_key | string | 否 | 权限筛选，如 `view_space_setting` |
+| page_token | string | 否 | 分页 token（翻页时使用） |
+| with_more | boolean | 否 | 是否返回 has_more |
 
 **响应** (`code: 0` 表示成功):
 ```json
 {
   "code": 0,
-  "message": "success",
+  "msg": "ok",
   "data": {
     "has_more": false,
     "list": [
       {
-        "kuid": "0s_3053257612",
+        "kuid": "0s_3074005481",
         "kuid_type": "space_t",
-        "space_name": "测试知识库",
+        "space_name": "CLI测试知识库",
         "cover_img": "https://zl.wpscdn.cn/...",
-        "desc": "测试知识库 - AI生成知识库",
-        "group_id": "2674413330",
-        "drive_id": "3053257612",
+        "desc": "CLI自动创建的测试知识库",
+        "group_id": "2681479779",
+        "drive_id": "3074005481",
         "has_permission": true,
-        "utime": 1772720347,
+        "utime": 1775203525,
         "follow": false,
         "top": false,
         "square_category": "doclib",
-        "member_total": 0,
-        "corp_id": 0
+        "member_total": 1,
+        "file_total": 0,
+        "corp_id": 0,
+        "owner": {
+          "id": 276248294,
+          "name": "010050",
+          "avatar": "https://img.qwps.cn/..."
+        }
       }
     ]
   }
