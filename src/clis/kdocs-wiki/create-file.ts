@@ -11,7 +11,7 @@ cli({
   args: [
     { name: 'kuid', required: true, help: 'Target space kuid or parent folder kuid' },
     { name: 'title', required: true, positional: true, help: 'File name' },
-    { name: 'type', default: 'w', help: 'Doc type: w(Word) / s(Sheet) / p(PPT)', choices: ['w', 's', 'p'] },
+    { name: 'type', default: 'w', help: 'Type: w(Word) / s(Sheet) / p(PPT) / folder', choices: ['w', 's', 'p', 'folder'] },
   ],
   columns: ['field', 'value'],
   func: async (page: IPage, kwargs) => {
