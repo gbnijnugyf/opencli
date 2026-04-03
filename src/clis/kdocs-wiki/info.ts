@@ -18,7 +18,7 @@ cli({
       is_record: 'true',
       resource: 'permissions',
     });
-    const d = result.data || {};
+    const d = result.data?.space || result.data || {};
     return [
       { field: 'name', value: d.space_name || d.title || '' },
       { field: 'kuid', value: d.kuid || kwargs.kuid },
@@ -26,7 +26,8 @@ cli({
       { field: 'group_id', value: d.group_id || '' },
       { field: 'drive_id', value: d.drive_id || '' },
       { field: 'owner', value: d.owner?.name || '' },
-      { field: 'created', value: formatTime(d.ctime) },
+      { field: 'files', value: String(d.file_total ?? '') },
+      { field: 'members', value: String(d.member_total ?? '') },
       { field: 'updated', value: formatTime(d.utime) },
       { field: 'cover', value: d.cover_img || '' },
     ].filter(r => r.value);
