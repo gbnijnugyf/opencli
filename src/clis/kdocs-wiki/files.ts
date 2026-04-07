@@ -19,11 +19,11 @@ cli({
   ],
   columns: ['title', 'type', 'kuid', 'file_id', 'size', 'created'],
   func: async (page: IPage, kwargs) => {
-    const result = await wikiGet<any>(page, '/file/node/locate', {
+    const result = await wikiGet<any>(page, '/file/node/get', {
       kuid: kwargs.kuid,
       page_size: String(kwargs.limit),
     });
-    const nodes = result.data?.node_list || [];
+    const nodes = result.data?.list || [];
     return nodes.map((n: any) => ({
       title: n.title || '',
       type: DOC_TYPES[n.doc_type] || n.doc_type || '',
